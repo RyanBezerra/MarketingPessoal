@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Meu Portfólio</title>
+        <meta name="description" content="Portfólio profissional">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <header class="navbar">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#sobre">Sobre mim</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="inicio" class="hero">
+                <div class="hero-content">
+                    <span class="greeting">Olá, eu sou</span>
+                    <h1>Ryan</h1>
+                    <p class="subtitle">Front-End Developer</p>
+                    <div class="cta-buttons">
+                        <a href="#projetos" class="btn primary">Projetos</a>
+                        <a href="#contato" class="btn secondary">Contato</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="servicos" class="services">
+                <div class="abstract-bg">
+                    <div class="abstract-shape shape1"></div>
+                    <div class="abstract-shape shape2"></div>
+                    <div class="abstract-shape shape3"></div>
+                    <div class="abstract-shape shape4"></div>
+                    <div class="abstract-shape shape5"></div>
+                    <div class="abstract-shape shape6"></div>
+                    <div class="abstract-shape shape7"></div>
+                    <div class="abstract-shape shape8"></div>
+                </div>
+                <h2 class="fade-in">Serviços</h2>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-content">
+                            <h3>Desenvolvimento Web</h3>
+                            <p>Criação de sites e aplicações web modernas e responsivas.</p>
+                        </div>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-content">
+                            <h3>UI/UX Design</h3>
+                            <p>Design de interfaces intuitivas e experiências de usuário memoráveis.</p>
+                        </div>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-content">
+                            <h3>Consultoria</h3>
+                            <p>Orientação técnica e estratégica para seu projeto.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projetos" class="projects">
+                <div class="projects-bg">
+                    <div class="project-shape shape1"></div>
+                    <div class="project-shape shape2"></div>
+                    <div class="project-shape shape3"></div>
+                    <div class="project-shape shape4"></div>
+                    <div class="project-shape shape5"></div>
+                    <div class="project-shape shape6"></div>
+                </div>
+                <h2 class="fade-in">Projetos</h2>
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <div class="project-image"></div>
+                        <h3>Projeto 1</h3>
+                        <p>Descrição do projeto e tecnologias utilizadas.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn small">Demo</a>
+                            <a href="#" class="btn small secondary">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in">
+                        <div class="project-image"></div>
+                        <h3>Projeto 2</h3>
+                        <p>Descrição do projeto e tecnologias utilizadas.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn small">Demo</a>
+                            <a href="#" class="btn small secondary">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in">
+                        <div class="project-image"></div>
+                        <h3>Projeto 3</h3>
+                        <p>Descrição do projeto e tecnologias utilizadas.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn small">Demo</a>
+                            <a href="#" class="btn small secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sobre" class="about">
+                <h2 class="fade-in">Sobre mim</h2>
+                <div class="about-content">
+                    <p class="fade-in">Sou um desenvolvedor apaixonado por criar soluções digitais inovadoras. Com experiência em diversas tecnologias, busco sempre entregar projetos de alta qualidade.</p>
+                    <div class="skills">
+                        <h3 class="fade-in">Habilidades</h3>
+                        <div class="skills-grid">
+                            <span class="skill-tag fade-in">HTML</span>
+                            <span class="skill-tag fade-in">CSS</span>
+                            <span class="skill-tag fade-in">JavaScript</span>
+                            <span class="skill-tag fade-in">React</span>
+                            <span class="skill-tag fade-in">Node.js</span>
+                            <span class="skill-tag fade-in">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contato" class="contact">
+                <h2 class="fade-in">Entre em contato</h2>
+                <div class="contact-content">
+                    <form class="contact-form fade-in">
+                        <div class="form-group">
+                            <input type="text" placeholder="Seu Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Seu Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Sua Mensagem" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary">Enviar Mensagem</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="#" class="social-link fade-in">GitHub</a>
+                        <a href="#" class="social-link fade-in">LinkedIn</a>
+                        <a href="#" class="social-link fade-in">Twitter</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Seu Nome. Todos os direitos reservados.</p>
+        </footer>
+
+        <script src="index.js"></script>
+    </body>
+</html>

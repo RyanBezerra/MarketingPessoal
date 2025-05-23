@@ -104,43 +104,94 @@ heroContent.style.zIndex = '1';
 const fadeElements = document.querySelectorAll('.fade-in');
 let lastScrollY = window.scrollY;
 let ticking = false;
+const elementVisible = 150;
 
-function checkFade() {
-    fadeElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementBottom = element.getBoundingClientRect().bottom;
-        const elementVisible = 150;
-        
-        // Verifica se o elemento está entrando na tela
-        if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add('is-visible');
-            element.classList.remove('is-hidden');
-        }
-        
-        // Verifica se o elemento está saindo da tela
-        if (elementBottom < 0 || elementTop > window.innerHeight) {
-            element.classList.remove('is-visible');
-            element.classList.add('is-hidden');
+// Usando Intersection Observer para melhor performance
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            entry.target.classList.remove('is-hidden');
+        } else {
+            entry.target.classList.remove('is-visible');
+            entry.target.classList.add('is-hidden');
         }
     });
-    
-    lastScrollY = window.scrollY;
-    ticking = false;
-}
+}, {
+    threshold: 0.1,
+    rootMargin: `${elementVisible}px 0px`
+});
 
-// Otimização do scroll com requestAnimationFrame
-function onScroll() {
-    if (!ticking) {
-        window.requestAnimationFrame(checkFade);
-        ticking = true;
-    }
-}
+// Observar todos os elementos com fade-in
+fadeElements.forEach(element => {
+    observer.observe(element);
+});
 
-// Verificar elementos visíveis no carregamento
-window.addEventListener('load', checkFade);
+// Remover os event listeners antigos que não são mais necessários
+window.removeEventListener('scroll', onScroll);
+window.removeEventListener('resize', checkFade);
 
-// Verificar elementos visíveis no scroll
-window.addEventListener('scroll', onScroll);
+// Tabs functionality
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabPanes = document.querySelectorAll('.tab-pane');
 
-// Verificar elementos visíveis no resize
-window.addEventListener('resize', checkFade);
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons and panes
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding pane
+        btn.classList.add('active');
+        const tabId = btn.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+    });
+});
+
+// Engine Tabs functionality
+const engineTabs = document.querySelectorAll('.engine-tab');
+const engineSpecs = document.querySelector('.engine-specs');
+
+engineTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        engineTabs.forEach(t => t.classList.remove('active'));
+        
+        // Add active class to clicked tab
+        tab.classList.add('active');
+        
+        // Update specs based on selected tab
+        const tabType = tab.getAttribute('data-tab');
+        if (tabType === 'sea-level') {
+            engineSpecs.innerHTML = `
+                <div class="spec-item">
+                    <span class="spec-value">845 kN</span>
+                    <span class="spec-label">THRUST</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-value">311</span>
+                    <span class="spec-label">SEC</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-value">180</span>
+                    <span class="spec-label">SEC</span>
+                </div>
+            `;
+        } else if (tabType === 'vacuum') {
+            engineSpecs.innerHTML = `
+                <div class="spec-item">
+                    <span class="spec-value">981 kN</span>
+                    <span class="spec-label">THRUST</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-value">348</span>
+                    <span class="spec-label">SEC</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-value">205</span>
+                    <span class="spec-label">SEC</span>
+                </div>
+            `;
+        }
+    });
+});
